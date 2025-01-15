@@ -2,7 +2,6 @@ let listaDeAmigos = [];
 
 function adicionar() {
     let nomeAmigo = document.getElementById("nome-amigo").value;
-    let amigosIncluidos = document.getElementById("lista-amigos");    
 
     if ((!isNaN(nomeAmigo)) || (nomeAmigo === "")){
         alert("Insira um nome válido.")
@@ -11,7 +10,7 @@ function adicionar() {
     }
 
     if (listaDeAmigos.includes(nomeAmigo)) {
-        alert("Amigo já incluído, verifique o nome digitado.");
+        alert("Nome já incluído! Insira outro nome.");
         return;
     }
 
@@ -19,7 +18,7 @@ function adicionar() {
     
     document.getElementById("nome-amigo").value = "";
 
-    atualizarLista();
+    atualizarAmigos();
     atualizarSorteio();
 }
 
@@ -35,8 +34,6 @@ function sortear() {
 
     let amigosSorteados = [...listaDeAmigos];
     embaralhar(amigosSorteados);
-    
-
     // Verifica repetição
     for (let index = 0; index < listaDeAmigos.length; index++) {
         if (listaDeAmigos[index] === amigosSorteados[index]) {
@@ -66,7 +63,7 @@ function reiniciar() {
 
 function removerAmigo(index) {
     listaDeAmigos.splice(index, 1);
-    atualizarLista();
+    atualizarAmigos();
     atualizarSorteio();
 }
 
@@ -75,7 +72,7 @@ function atualizarSorteio() {
     listaSorteio.innerHTML = "";
 }
 
-function atualizarLista() {
+function atualizarAmigos() {
     let amigosIncluidos = document.getElementById("lista-amigos");
     amigosIncluidos.innerHTML = "";
 
